@@ -4,7 +4,7 @@
 |Homework|completed/uncompleted|Description|
 |----|------|-------|
 |Problem1|completed||
-|Problem2|uncompleted|cannot return array|
+|Problem2|completed||
 |Problem3|completed||
 |Problem4|completed||
 |Problem5|completed||
