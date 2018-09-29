@@ -49,7 +49,7 @@ Date::Date(const string& s)
  *
  *  Grade: 10%
  */
-bool Date::isLeapYear(int year)
+bool Date::isLeapYear(int year) //completed
 {
     bool flag = false;
     if(year % 400 == 0)
@@ -76,9 +76,35 @@ bool Date::isLeapYear(int year)
  *
  *  Grade: 10%
  */
-int Date::daysInMonth(int month, int year)
+int Date::daysInMonth(int month, int year) //completed
 {
-    return 0;                           // replace this line with your solution
+    int days = 0;
+    if(month == 2) //address days in Feb
+    {
+        if(isLeapYear(year))
+            days = 29;
+        else
+            days = 28;
+    }
+    else
+    {
+        //discuss in two parts, Jan-Jul, Aug--Dec
+        if(month <= 7)
+        {
+            if(month % 2 == 0)
+                days = 30;
+            else
+                days = 31;
+        }
+        else
+        {
+            if(month % 2 == 0)
+                days = 31;
+            else
+                days = 30;
+        }
+    }
+    return days;                           // replace this line with your solution
 }
 
 
@@ -90,9 +116,42 @@ int Date::daysInMonth(int month, int year)
  *
  *  Grade: 20%
  */
-bool Date::isValidDate(int month, int day, int year)
+bool Date::isValidDate(int month, int day, int year) // completed
 {
-    return true;                        // replace this line with your solution
+    bool flag = true;
+    //check year
+    if(year < 1)
+    {
+        flag = false;
+    }
+    else
+    {
+        //check month
+        if(month <= 12 && month >= 1)
+        {
+            //check date
+            if(ddate < 1)
+            {
+                flag = false;
+            }
+            else
+            {
+                if(ddate <= daysInMonth(month,year))
+                {
+                    flag = true;
+                }
+                else
+                {
+                    flag = false;
+                }
+            }
+        }
+        else
+        {
+            flag = false;
+        }
+    }
+    return flag;                        // replace this line with your solution
 }
 
 
@@ -104,8 +163,11 @@ bool Date::isValidDate(int month, int day, int year)
  *
  *  Grade: 20%
  */
-string Date::toString()
+string Date::toString()//completed
 {
+    string ans = to_string(dmonth) + "/"
+                + to_string(ddate) + "/"
+                + to_string(dyear);
     return "stuff";                     // replace this line with your solution
 }
 
@@ -116,9 +178,43 @@ string Date::toString()
  *
  *  Grade: 10%
  */
-bool Date::isBefore(const Date& d)
+bool Date::isBefore(const Date& d) //completed
 {
-    return true;                        // replace this line with your solution
+    bool flag = true;
+    // check year
+    if(dyear < d.dyear)
+    {
+        flag = true;
+    }
+    else if(dyear > d.dyear)
+    {
+        flag = false;
+    }
+    else // when dyear is same as d.dyear
+    {
+        //check month
+        if(dmonth < d.dmonth)
+        {
+            flag = true;
+        }
+        else if (dmonth > d.dmonth)
+        {
+            flag = false;
+        }
+        else // when dmonth is same as d.dmonth
+        {
+            //check date
+            if(ddate < d.ddate)
+            {
+                flag = true;
+            }
+            else
+            {
+                flag = false;
+            }
+        }
+    }
+    return flag;                        // replace this line with your solution
 }
 
 
@@ -128,8 +224,17 @@ bool Date::isBefore(const Date& d)
  *
  *  Grade: 10%
  */
-bool Date::isAfter(const Date& d)
+bool Date::isAfter(const Date& d) // completed
 {
+    bool flag = true;
+    if(isEqual(d) || isBefore(d))
+    {
+        flag = false;
+    }
+    else
+    {
+        flag = true;
+    }
     return true;                        // replace this line with your solution
 }
 
@@ -140,9 +245,32 @@ bool Date::isAfter(const Date& d)
  *
  *  Grade: 10%
  */
-bool Date::isEqual(const Date& d)
+bool Date::isEqual(const Date& d) // completed
 {
-    return true;                        // replace this line with your solution
+    bool flag = true;
+    if(dyear == d.dyear)
+    {
+        if(dmonth == d.dmonth)
+        {
+            if(ddate == d.ddate)
+            {
+                flag = true;
+            }
+            else
+            {
+                flag = false;
+            }
+        }
+        else
+        {
+            flag = false;
+        }
+    }
+    else
+    {
+        flag = false;
+    }
+    return flag;                        // replace this line with your solution
 }
 
 
@@ -154,9 +282,15 @@ bool Date::isEqual(const Date& d)
  *
  *  Grade: 15%
  */
-int Date::dayInYear()
+int Date::dayInYear() // completed
 {
-    return 0;                           // replace this line with your solution
+    int nthday = 0;
+    for(int i = 1; i < month; i += 1)
+    {
+        nthday += daysInMonth(i,year);
+    }
+    nthday += ddate;
+    return nthday;                           // replace this line with your solution
 }
 
 

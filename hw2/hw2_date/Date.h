@@ -1,8 +1,8 @@
 /*
  * Briefly explain the function of this class.
  *
- * @author 			Your name here
- * @ID 				Your student ID here
+ * @author 			Tu hao wei
+ * @ID 				B06505001
  * @Department 		Engineering Science and Ocean Engineering
  * @Affiliation 	National Taiwan University
  *
@@ -59,7 +59,7 @@ public:
    *
    *  Grade: 10%
    */
-  bool isLeapYear(int year);
+  bool isLeapYear(int year); // completed
 
 
   /*
@@ -70,7 +70,7 @@ public:
    *
    *  Grade: 10%
    */
-  int daysInMonth(int month, int year);
+  int daysInMonth(int month, int year); //completed
 
 
   /*
@@ -81,7 +81,7 @@ public:
    *
    *  Grade: 20%
    */
-  bool isValidDate(int month, int day, int year);
+  bool isValidDate(int month, int day, int year);//completed
 
 
   /*
@@ -92,7 +92,7 @@ public:
    *
    *  Grade: 20%
    */
-  string toString();
+  string toString();// completed
 
 
   /*
@@ -101,7 +101,7 @@ public:
    *
    *  Grade: 10%
    */
-  bool isBefore(const Date& d);
+  bool isBefore(const Date& d);// completed
 
 
   /*
@@ -110,7 +110,7 @@ public:
    *
    *  Grade: 10%
    */
-  bool isAfter(const Date& d);
+  bool isAfter(const Date& d);// completed
 
 
   /*
@@ -119,7 +119,7 @@ public:
    *
    *  Grade: 10%
    */
-  bool isEqual(const Date& d);
+  bool isEqual(const Date& d);// completed
 
 
   /*
@@ -130,10 +130,11 @@ public:
    *
    *  Grade: 15%
    */
-  int dayInYear();
+  int dayInYear();// completed
 
 
-  /* Determines the difference in days between d and this Date.  For example,
+  /*
+  Determines the difference in days between d and this Date.  For example,
    *  if this Date is 6/16/2006 and d is 6/15/2006, the difference is 1.
    *  If this Date occurs before d, the result is negative.
    *  @return the difference in days between d and this Date.
