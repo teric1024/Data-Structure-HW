@@ -354,16 +354,17 @@ int Date::dayInYear() // completed
 int Date::difference(const Date& d)// cannot use const
 {
     int ans = 0;
-    if(isEqual(d))
+    Date dc = d;
+    if(isEqual(dc))
     {
         ans = 0;
     }
-    else if (isBefore(d))
+    else if (isBefore(dc))
     {
         //check year
-        if(dyear < d.dyear)
+        if(dyear < dc.dyear)
         {
-            for(int i = dyear; i < d.dyear; i += 1)
+            for(int i = dyear; i < dc.dyear; i += 1)
             {
                 if(isLeapYear(i))
                 {
@@ -376,14 +377,14 @@ int Date::difference(const Date& d)// cannot use const
             }
         }
         ans -= dayInYear();
-        ans += d.dayInYear();
+        ans += dc.dayInYear();
         ans = 0-ans;
     }
     else
     {
-        if(dyear > d.dyear)
+        if(dyear > dc.dyear)
         {
-            for(int i = d.dyear; i < dyear; i += 1)
+            for(int i = dc.dyear; i < dyear; i += 1)
             {
                 if(isLeapYear(i))
                 {
@@ -395,7 +396,7 @@ int Date::difference(const Date& d)// cannot use const
                 }
             }
         }
-        ans -= d.dayInYear();
+        ans -= dc.dayInYear();
         ans += dayInYear();
     }
     return ans;                           // replace this line with your solution
