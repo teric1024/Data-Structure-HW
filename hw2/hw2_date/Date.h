@@ -19,6 +19,20 @@
 #include <iostream>
 using namespace std;
 
+class DateException
+{
+private:
+    string errmsg;
+public:
+    DateException(const string &err):errmsg(err){}
+    string getmsg(){return errmsg;}
+};
+
+class DateInputException:public DateException
+{
+public:
+    DateInputException(const string &err):DateException(err){}
+};
 class Date {
 private:
 
@@ -38,7 +52,7 @@ public:
    *
    *  Grade: 15%
    */
-  Date(int month, int day, int year);
+  Date(int month, int day, int year)throw(DateException);//completed
 
 
   /*
@@ -50,7 +64,7 @@ public:
    *
    *  Grade: 30%
    */
-  Date(const string& s);
+  Date(const string& s)throw(DateException, DateInputException);
 
 
   /*

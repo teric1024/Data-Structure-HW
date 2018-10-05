@@ -13,6 +13,8 @@
 
 #include "Date.h"
 
+
+
 /*
    Constructs a Date with the given month, day and year.   If the date is
    not valid, the entire program will halt with an error message.
@@ -22,9 +24,25 @@
 
    Grade: 15%
  */
-Date::Date(int month, int day, int year)
+Date::Date(int month, int day, int year) throw(DateException)
 {
-
+    try
+    {
+        if(isValidDate(month,day,year))
+        {
+            dyear = year;
+            dmonth = month;
+            ddate = day;
+        }
+        else
+        {
+            throw DateException("Invalid Date!!\n");
+        }
+    }
+    catch(DateException &de)
+    {
+        cout << de.getmsg();
+    }
 }
 
 
@@ -37,9 +55,41 @@ Date::Date(int month, int day, int year)
  *
  *  Grade: 30%
  */
-Date::Date(const string& s)
+Date::Date(const string& s)throw(DateException, DateInputException)
 {
-
+    string m, d, y; //declare three string to store date
+    int pos[2]= {}; //declare two ints to store positions of '/'
+    int month = 0, day = 0, year = 0;
+    try
+    {
+        pos[0] = s.find("/", 0);
+        pos[1] = s.find("/", pos[0]+1);
+        m = m.assign(s, 0, pos[0]-0);
+        d = d.assign(s, pos[0]+1, pos[1]-pos[0]);
+        y = y.assign(s, pos[1]+1, s.size());
+        if(m.empty() || d.empty() || y.empty())
+        {
+            throw DateInputException("Missing input!!\n");
+        }
+        month = stoi(m);
+        day = stoi(d);
+        year = stoi(y);
+        if(!isValidDate(month,day,year))
+        {
+            throw DateException("Invalid Date!!\n");
+        }
+        dmonth = month;
+        ddate = day;
+        dyear = year;
+    }
+    catch(DateInputException &die)
+    {
+        cout << die.getmsg();
+    }
+    catch(DateException &de)
+    {
+        cout << de.getmsg();
+    }
 }
 
 
@@ -130,13 +180,13 @@ bool Date::isValidDate(int month, int day, int year) // completed
         if(month <= 12 && month >= 1)
         {
             //check date
-            if(ddate < 1)
+            if(day < 1)
             {
                 flag = false;
             }
             else
             {
-                if(ddate <= daysInMonth(month,year))
+                if(day <= daysInMonth(month,year))
                 {
                     flag = true;
                 }
@@ -166,9 +216,9 @@ bool Date::isValidDate(int month, int day, int year) // completed
 string Date::toString()//completed
 {
     string ans = to_string(dmonth) + "/"
-                + to_string(ddate) + "/"
-                + to_string(dyear);
-    return "stuff";                     // replace this line with your solution
+                 + to_string(ddate) + "/"
+                 + to_string(dyear);
+    return ans;                     // replace this line with your solution
 }
 
 
@@ -235,7 +285,7 @@ bool Date::isAfter(const Date& d) // completed
     {
         flag = true;
     }
-    return true;                        // replace this line with your solution
+    return flag;                        // replace this line with your solution
 }
 
 
@@ -285,9 +335,9 @@ bool Date::isEqual(const Date& d) // completed
 int Date::dayInYear() // completed
 {
     int nthday = 0;
-    for(int i = 1; i < month; i += 1)
+    for(int i = 1; i < dmonth; i += 1)
     {
-        nthday += daysInMonth(i,year);
+        nthday += daysInMonth(i,dyear);
     }
     nthday += ddate;
     return nthday;                           // replace this line with your solution
@@ -301,8 +351,53 @@ int Date::dayInYear() // completed
  *
  *  Grade: 10%
  */
-int Date::difference(const Date& d)
+int Date::difference(const Date& d)// cannot use const
 {
-    return 0;                           // replace this line with your solution
+    int ans = 0;
+    if(isEqual(d))
+    {
+        ans = 0;
+    }
+    else if (isBefore(d))
+    {
+        //check year
+        if(dyear < d.dyear)
+        {
+            for(int i = dyear; i < d.dyear; i += 1)
+            {
+                if(isLeapYear(i))
+                {
+                    ans += 366;
+                }
+                else
+                {
+                    ans += 365;
+                }
+            }
+        }
+        ans -= dayInYear();
+        ans += d.dayInYear();
+        ans = 0-ans;
+    }
+    else
+    {
+        if(dyear > d.dyear)
+        {
+            for(int i = d.dyear; i < dyear; i += 1)
+            {
+                if(isLeapYear(i))
+                {
+                    ans += 366;
+                }
+                else
+                {
+                    ans += 365;
+                }
+            }
+        }
+        ans -= d.dayInYear();
+        ans += dayInYear();
+    }
+    return ans;                           // replace this line with your solution
 }
 
