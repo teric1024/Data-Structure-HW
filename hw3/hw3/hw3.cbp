@@ -36,6 +36,9 @@
 		<Unit filename="DList.h" />
 		<Unit filename="DListNode.cpp" />
 		<Unit filename="DListNode.h" />
+		<Unit filename="LockDList.cpp" />
+		<Unit filename="LockDList.h" />
+		<Unit filename="LockDListNode.h" />
 		<Unit filename="TestDList.cpp" />
 		<Extensions>
 			<code_completion />

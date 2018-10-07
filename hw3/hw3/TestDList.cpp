@@ -1,4 +1,5 @@
 #include <cassert>
+#include <iostream>
 #include "DList.h"
 #include "DListNode.h"
 #include "LockDList.h"
@@ -21,22 +22,22 @@ int main() {
   cout << "->OK" << endl;
 
   cout << "Insert 2 items(2,222) at the back of this DList.";
-  d1.insertBack(2); 
+  d1.insertBack(2);
   d1.insertBack(222);
   assert(d1.length() == 5);
   cout << "->OK" << endl;
-  
+
   cout << "999 is at the front of this DList.";
   assert(d1.front()->item == 999);
   cout << "->OK" << endl;
-  cout << "If the DList is empty, front() return null."; 
+  cout << "If the DList is empty, front() return null.";
   assert(!dempty.front());
   cout << "->OK" << endl;
-  
+
   cout << "222 is at the back of this DList.";
-  assert(d1.back()->item == 222); 
+  assert(d1.back()->item == 222);
   cout << "->OK" << endl;
-  cout << "If the DList is empty, back() return null."; 
+  cout << "If the DList is empty, back() return null.";
   assert(!dempty.back());
   cout << "->OK" << endl;
 
@@ -63,7 +64,7 @@ int main() {
   cout << "If input is null,return null.";
   assert(!(d1.prev(NULL)));
   cout << "->OK" << endl;
-  
+
   cout << endl;
   cout << "insertAfter() Test:" << endl;
   cout << "[999 3 1 2 222]->[999 3 12345 1 2 222 123456]" << endl;
@@ -90,7 +91,7 @@ int main() {
   cout << "insertBefore(item,NULL) do nothing.";
   d1.insertBefore(1,NULL);
   cout << "->OK" << endl;
-  
+
   cout << endl;
   cout << "remove() Test ";
   d1.remove(NULL);
@@ -103,7 +104,7 @@ int main() {
   d1.remove(d1.back());
   assert(d1.front()->item == 12345 && d1.back()->item == 1);
   cout << "->OK" << endl;
-  
+
   cout << endl;
   cout << "========================" << endl;
   cout << "Part 2 Testing LockDList" << endl;
