@@ -15,5 +15,7 @@
 template<typename T>//flaw, with LockDListNode *head and DListNode *head
 class LockDList: public DList
 {
-protected:
+public:
+    void lockNode(DListNode *node);
+    void remove(DListNode<T>* node);
 };
