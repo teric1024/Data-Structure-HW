@@ -34,7 +34,8 @@
 
     Date* d4 = new Date("2/27/1977");
     Date* d5 = new Date("8/31/2110");
-
+    Date* d6 = new Date("1/1/0");
+    cout << d6->toString();
     /* I recommend you write code to test the isLeapYear function! */
 
     cout << "\nTesting before, after and equal->";

@@ -42,6 +42,7 @@ Date::Date(int month, int day, int year) throw(DateException)
     catch(DateException &de)
     {
         cout << de.getmsg();
+        exit(0);
     }
 }
 
@@ -85,10 +86,12 @@ Date::Date(const string& s)throw(DateException, DateInputException)
     catch(DateInputException &die)
     {
         cout << die.getmsg();
+        exit(0);
     }
     catch(DateException &de)
     {
         cout << de.getmsg();
+        exit(0);
     }
 }
 
