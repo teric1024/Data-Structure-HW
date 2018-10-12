@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1538927995 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw3\hw3\dlist.cpp
+1538928586 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw3\hw3\dlist.cpp
 	<iostream>
 	"DList.h"
 
@@ -11,5 +11,28 @@
 1538891229 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw3\hw3\dlistnode.cpp
 	"DListNode.h"
 
-1538928238 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw3\hw3\lockdlist.cpp
+1538928451 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw3\hw3\lockdlist.cpp
+	"LockDList.h"
+
+1539342506 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw3\hw3\lockdlist.h
+	"LockDListNode.h"
+	"DList.h"
+
+1539342506 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw3\hw3\lockdlistnode.h
+	"DListNode.h"
+
+1539342193 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw3\hw3\lockdlistnode.cpp
+	"LockDListNode.h"
+
+1539341155 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw3\hw3\testdlist.cpp
+	<cassert>
+	<iostream>
+	"DList.h"
+	"DListNode.h"
+	"LockDList.h"
+	"LockDList.cpp"
+	"LockDListNode.h"
+
+1538928451 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw3\hw3\lockdlist.cpp
+	"LockDList.h"
 

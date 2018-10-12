@@ -9,6 +9,10 @@
   LockDListNode.h
   version 1.0
 */
+
+#ifndef LOCKDLISTNODE_H
+#define LOCKDLISTNODE_H
+
 #include "DListNode.h"
 
 template<typename T>
@@ -21,8 +25,7 @@ protected:
     friend class LockDList<T>;
     bool isLocked;
 public:
-    LockDListNode(const T& i, DListNode<T>* p, DListNode<T>* n, bool l):DListNode(i,p,n)
-    {
-        isLocked = l;
-    }
-}
+    LockDListNode(const T& i, DListNode<T>* p, DListNode<T>* n, bool l);
+};
+
+#endif // LOCKDLISTNODE_H

@@ -7,12 +7,13 @@
 #include "LockDListNode.h"
 using namespace std;
 
+
 int main() {
   cout << "====================" << endl;
   cout << "Part 1 Testing DList" << endl;
   cout << "====================" << endl;
   DList<int> d1;
-  DList<int> dempty;
+  /*DList<int> dempty;
 
   cout << "Insert 3 items(1,3,999) at the front of this DList.";
   d1.insertFront(1);
@@ -104,7 +105,7 @@ int main() {
   d1.remove(d1.back());
   assert(d1.front()->item == 12345 && d1.back()->item == 1);
   cout << "->OK" << endl;
-
+/*
   cout << endl;
   cout << "========================" << endl;
   cout << "Part 2 Testing LockDList" << endl;
@@ -129,6 +130,7 @@ int main() {
   }
   assert(ld1.front()->item == 1 && ld1.back()->item == 5);
   ld1.toString();
+  */
 
   return 0;
 }
