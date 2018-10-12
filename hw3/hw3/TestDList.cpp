@@ -13,7 +13,7 @@ int main() {
   cout << "Part 1 Testing DList" << endl;
   cout << "====================" << endl;
   DList<int> d1;
-  /*DList<int> dempty;
+  DList<int> dempty;
 
   cout << "Insert 3 items(1,3,999) at the front of this DList.";
   d1.insertFront(1);
