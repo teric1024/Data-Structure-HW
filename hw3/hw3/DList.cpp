@@ -54,10 +54,10 @@ DListNode<T>* DList<T>::newNode(const T& item,
 template<typename T>
 DList<T>::DList() {
 	//  Your solution here.
-	DListNode<T>* sentinel;
-	sentinel = newNode(NULL, &sentinel, &sentinel);
+	DListNode<T> *sentinel;
+	sentinel = newNode(NULL, sentinel, sentinel);
 	size = 0;
-	head = &sentinel;
+	head = sentinel;
 }
 
 /**
