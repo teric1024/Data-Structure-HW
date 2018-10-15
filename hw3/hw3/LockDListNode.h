@@ -25,7 +25,10 @@ protected:
     friend class LockDList<T>;
     bool isLocked;
 public:
-    LockDListNode(const T& i, DListNode<T>* p, DListNode<T>* n, bool l);
+    LockDListNode(const T& i, DListNode<T>* p, DListNode<T>* n):DListNode<T>::DListNode(i,p,n)
+    {
+        isLocked = false;
+    }
 };
 
 #endif // LOCKDLISTNODE_H

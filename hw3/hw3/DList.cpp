@@ -55,9 +55,11 @@ template<typename T>
 DList<T>::DList() {
 	//  Your solution here.
 	DListNode<T> *sentinel = NULL;
-	sentinel = newNode(0, sentinel, sentinel);
+	sentinel = newNode(0, NULL, NULL);
 	size = 0;
 	head = sentinel;
+	sentinel->prev = sentinel;
+	sentinel->next = sentinel;
 }
 
 /**
@@ -165,7 +167,7 @@ DListNode<T>* DList<T>::back() {
 template<typename T>
 DListNode<T>* DList<T>::next(DListNode<T>* node) {
 	// Your solution here.
-	if(node->item == 0 || head->prev == node)
+	if(node == NULL || head->prev == node)
     {
         return NULL;
     }
@@ -188,7 +190,7 @@ DListNode<T>* DList<T>::next(DListNode<T>* node) {
 template<typename T>
 DListNode<T>* DList<T>::prev(DListNode<T>* node) {
 	// Your solution here.
-	if(node->item == 0 || head->next == node)
+	if(node == NULL || head->next == node)
     {
         return NULL;
     }
@@ -208,19 +210,15 @@ DListNode<T>* DList<T>::prev(DListNode<T>* node) {
 template<typename T>//unsure
 void DList<T>::insertAfter(const T& item, DListNode<T>* node) {
 	// Your solution here.
-	if(node->item == 0)
+	if(node == NULL)
     {
         return;
     }
-    else if(node == head->prev)
-    {
-        return;
-    }
-    else
-    {
-        node->next->item = item;
-        return;
-    }
+    DListNode<T> *temp = node->next;
+    node->next = newNode(item, node, temp);
+    temp->prev = node->next;
+    size += 1;
+    return;
 }
 
 /**
@@ -233,19 +231,15 @@ void DList<T>::insertAfter(const T& item, DListNode<T>* node) {
 template<typename T>//unsure
 void DList<T>::insertBefore(const T& item, DListNode<T>* node) {
 	// Your solution here.
-	if(node->item == 0)
+	if(node == NULL)
     {
         return;
     }
-    else if(node == head->next)
-    {
-        return;
-    }
-    else
-    {
-        node->prev->item = item;
-        return;
-    }
+    DListNode<T> *temp = node->prev;
+    node->prev = newNode(item, temp, node);
+    temp->next = node->prev;
+    size += 1;
+    return;
 }
 
 /**
@@ -255,18 +249,16 @@ void DList<T>::insertBefore(const T& item, DListNode<T>* node) {
 template<typename T>
 void DList<T>::remove(DListNode<T>* node) {
 	// Your solution here.
-	if(node->item == 0)
+	if(node == NULL)
     {
         return;
     }
-    else
-    {
-        DListNode<T> *dprev = node->prev, *dnext = node->next;
-        delete node;
-        dprev->next = dnext;
-        dnext->prev = dprev;
-        size -= 1;
-    }
+    DListNode<T> *dprev = node->prev, *dnext = node->next;
+    delete node;
+    dprev->next = dnext;
+    dnext->prev = dprev;
+    size -= 1;
+    return;
 }
 
 /**
