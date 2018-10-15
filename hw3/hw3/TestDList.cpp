@@ -1,10 +1,13 @@
 #include <cassert>
 #include <iostream>
 #include "DList.h"
+#include "DList.cpp"
 #include "DListNode.h"
+#include "DlistNode.cpp"
 #include "LockDList.h"
 #include "LockDList.cpp"
 #include "LockDListNode.h"
+#include "LockDListNode.cpp"
 using namespace std;
 
 
