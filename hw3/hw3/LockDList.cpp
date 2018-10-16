@@ -28,6 +28,8 @@ LockDList<T>::LockDList()
 template<typename T>//uncompleted
 void LockDList<T>::lockNode(DListNode<T> *node)
 {
+    LockDListNode<T> *LLN = static_cast<LockDListNode<T>*>(node);
+    LLN->isLocked = true;
     return;
 }
 
@@ -35,11 +37,13 @@ void LockDList<T>::lockNode(DListNode<T> *node)
 template<typename T>
 void LockDList<T>::remove(DListNode<T>* node)
 {
-    if(node->isLocked == true)
+    //error
+    LockDListNode<T> *nnode = dynamic_cast<LockDListNode<T> *>(node);
+    if(nnode->isLocked == true)
         return;
     else
     {
-        DList<T>::remove(node);
+        DList<T>::remove(nnode);
         return;
     }
 }
@@ -48,4 +52,28 @@ template<typename T>
 LockDListNode<T>* LockDList<T>::newNode(const T& item,
 		DListNode<T>* prev, DListNode<T>* next) {
 	return new LockDListNode<T>(item, prev, next);
+}
+
+template<typename T>
+DListNode<T>* LockDList<T>::front() {
+	// Your solution here.
+	return static_cast<LockDListNode<T>*>(DList<T>::front());
+}
+
+template<typename T>
+DListNode<T>* LockDList<T>::back()
+{
+    return static_cast<LockDListNode<T>*>(DList<T>::back());
+}
+
+template<typename T>
+DListNode<T>* LockDList<T>::next(DListNode<T>* node)
+{
+    return static_cast<LockDListNode<T>*>(DList<T>::next(node));
+}
+
+template<typename T>
+DListNode<T>* LockDList<T>::prev(DListNode<T>* node)
+{
+    return static_cast<LockDListNode<T>*>(DList<T>::prev(node));
 }
