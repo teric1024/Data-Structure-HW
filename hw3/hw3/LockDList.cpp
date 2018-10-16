@@ -38,7 +38,8 @@ template<typename T>
 void LockDList<T>::remove(DListNode<T>* node)
 {
     //error
-    LockDListNode<T> *nnode = dynamic_cast<LockDListNode<T> *>(node);
+    //LockDListNode<T> *nnode = dynamic_cast<LockDListNode<T> *>(node);
+    LockDListNode<T> *nnode = static_cast<LockDListNode<T> *>(node);
     if(nnode->isLocked == true)
         return;
     else
