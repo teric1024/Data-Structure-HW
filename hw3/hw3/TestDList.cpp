@@ -97,6 +97,7 @@ int main() {
 
   cout << endl;
   cout << "remove() Test ";
+  cout << "remove node 1~3, node 6~9"<< endl;
   d1.remove(NULL);
   d1.remove(d1.next(d1.next(d1.front())));
   d1.remove(d1.front());
@@ -105,6 +106,7 @@ int main() {
   d1.remove(d1.back());
   d1.remove(d1.back());
   d1.remove(d1.back());
+  d1.toString();
   assert(d1.front()->item == 12345 && d1.back()->item == 1);
   cout << "->OK" << endl;
 
