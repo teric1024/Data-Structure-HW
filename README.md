@@ -1,8 +1,8 @@
 # Data-Structure-HW
 for my department ESOE
 
-|Date|Homework|Description|
-|----|------|-------|
-|9/21-10/4(9pm)|DS_CA1|handed in|
-|9/28-10/11(9pm)|DS_CA2|handed in
-|10/4-10/18(9pm)|DS_CA3|looing for information
+|Date|Homework|Description|Status
+|----|------|-------|----|
+|9/21-10/4(9pm)|DS_CA1|function practice|handed in
+|9/28-10/11(9pm)|DS_CA2|object practice|handed in
+|10/4-10/18(9pm)|DS_CA3|inheritance & dynamic_cast practice(Doubly_linked_list)|completed
