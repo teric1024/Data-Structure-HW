@@ -27,10 +27,6 @@ public:
     //override function
     virtual LockDListNode<T>* newNode(const T& item, DListNode<T>* prev,
 			DListNode<T>* next);
-    DListNode<T>* front();
-    DListNode<T>* back();
-    DListNode<T>* next(DListNode<T>* node);
-    DListNode<T>* prev(DListNode<T>* node);
 };
 
 #endif // LOCKDLIST_H

@@ -55,26 +55,3 @@ LockDListNode<T>* LockDList<T>::newNode(const T& item,
 	return new LockDListNode<T>(item, prev, next);
 }
 
-template<typename T>
-DListNode<T>* LockDList<T>::front() {
-	// Your solution here.
-	return dynamic_cast<LockDListNode<T>*>(DList<T>::front());
-}
-
-template<typename T>
-DListNode<T>* LockDList<T>::back()
-{
-    return dynamic_cast<LockDListNode<T>*>(DList<T>::back());
-}
-
-template<typename T>
-DListNode<T>* LockDList<T>::next(DListNode<T>* node)
-{
-    return dynamic_cast<LockDListNode<T>*>(DList<T>::next(node));
-}
-
-template<typename T>
-DListNode<T>* LockDList<T>::prev(DListNode<T>* node)
-{
-    return dynamic_cast<LockDListNode<T>*>(DList<T>::prev(node));
-}
