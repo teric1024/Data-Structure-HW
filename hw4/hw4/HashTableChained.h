@@ -10,11 +10,23 @@
  *  DO NOT CHANGE ANY PROTOTYPES IN THIS FILE.
  **/
 
+/**
+  Briefly explain the function of this class.
+
+  @author 			Tu hao wei
+  @ID 				B06505001
+  @Department 		Engineering Science and Ocean Engineering
+  @Affiliation 	    National Taiwan University
+
+  HashTableChained.h
+  version 1.0
+*/
+
 #ifndef HASHTABLECHAINED_H
 #define HASHTABLECHAINED_H
 
 #include "Dictionary.h"
-
+#include "DoublyLinkedList/DList.h"
 
 template<typename K, typename V>
 class HashTableChained : public Dictionary<K, V> {
@@ -24,7 +36,8 @@ private:
    *  Place any data fields here.
    **/
    int tablesize;
-   Entry **table;
+   int entrysize;
+   DList<Entry<K,V>> *table;
 
 public:
 

@@ -62,11 +62,12 @@ bool CheckerBoard::equals(const CheckerBoard& board) {
     //   a CheckerBoard.
     if(typeid(board) != typeid(CheckerBoard))
         return false;
+    CheckerBoard copy_b = board;
     for(int i = 0; i < DIMENSION; i += 1)
     {
         for(int j = 0; j < DIMENSION; j += 1)
         {
-            if(grid[i][j] != board.elementAt(i,j))
+            if(grid[i][j] != copy_b.elementAt(i,j))
                 return false;
         }
     }

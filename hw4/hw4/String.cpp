@@ -33,7 +33,7 @@ bool String::equals(const String& strg) {
     //   a String.
     if (typeid(strg) != typeid(String))
         return false;
-    else if(strcmp(this->getvalue(),strg.getvalue()) )
+    else if(this->getvalue() == strg.getvalue() )
         return true;
     else
         return false;
@@ -46,10 +46,10 @@ bool String::equals(const String& strg) {
 int String::hashCode() {
     // Replace the following line with your solution.
     int hashVal = 0;
-    stringlength = this->getvalue().length;
+    int stringlength = this->getvalue().size();
     for(int i = 0; i < stringlength; i += 1)
     {
-        hashVal = (127 * hashVal + this->getvalue().substr(i,1)) % 1690877;
+        hashVal = (127 * hashVal + int(this->getvalue().at(i))) % 1690877;
     }
     return hashVal;
 }

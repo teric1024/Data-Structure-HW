@@ -9,8 +9,21 @@
  *
  **/
 
+/**
+  Briefly explain the function of this class.
+
+  @author 			Tu hao wei
+  @ID 				B06505001
+  @Department 		Engineering Science and Ocean Engineering
+  @Affiliation 	    National Taiwan University
+
+  HashTableChained.cpp
+  version 1.0
+*/
+
 #include "HashTableChained.h"
 #include <iostream>
+#include <typeinfo>
 using namespace std;
 //check if the input number is a prime
 bool is_prime(int n)
@@ -36,12 +49,13 @@ template<typename K, typename V>
 HashTableChained<K, V>::HashTableChained(int sizeEstimate) {
     // Your solution here.
     int i = sizeEstimate;
-    for(; !is_prime(i), i += 1)
+    for(; !is_prime(i); i += 1)
     {
         //Do nothing
     }
     tablesize = i;
-    table = new Entry*(tablesize);
+    table = new DList<Entry<K,V>>[tablesize];
+    entrysize = 0;
 }
 
 /**
@@ -52,7 +66,8 @@ template<typename K, typename V>
 HashTableChained<K, V>::HashTableChained() {
     // Your solution here.
     tablesize = 101;
-    table = new Entry*(tablesize);
+    table = new DList<Entry<K,V>>[tablesize];
+    entrysize = 0;
 }
 
 /**
@@ -65,7 +80,7 @@ HashTableChained<K, V>::HashTableChained() {
 template<typename K, typename V>
 int HashTableChained<K, V>::compFunction(int code) {
     // Replace the following line with your solution.
-    int val = code %
+    int val = code % tablesize;
     return val;
 }
 
@@ -78,7 +93,7 @@ int HashTableChained<K, V>::compFunction(int code) {
 template<typename K, typename V>
 int HashTableChained<K, V>::size() {
     // Replace the following line with your solution.
-    return 0;
+    return entrysize;
 }
 
 /**
@@ -89,7 +104,14 @@ int HashTableChained<K, V>::size() {
 template<typename K, typename V>
 bool HashTableChained<K, V>::isEmpty() {
     // Replace the following line with your solution.
-    return true;
+    if(entrysize == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 /**
@@ -106,6 +128,10 @@ bool HashTableChained<K, V>::isEmpty() {
 template<typename K, typename V>
 void HashTableChained<K, V>::insert(const K& key, const V& value) {
     // Replace the following line with your solution.
+    Entry<K,V> in(key,value);
+    table[compFunction(key.hashCode())].insertFront(in);
+    entrysize += 1;
+    return;
 }
 
 /**
@@ -121,6 +147,18 @@ void HashTableChained<K, V>::insert(const K& key, const V& value) {
 template<typename K, typename V>
 bool HashTableChained<K, V>::find(const K& key) {
     // Replace the following line with your solution.
+
+    //"here" is a DList pointer pointing to the bucket where key may be.
+    DList<Entry<K,V>> *here = &table[compFunction(key.hashCode())];
+    //"current" points to the first entry of the bucket.
+    DListNode<Entry<K,V>> *current = here->head->next;
+    while (current != here->head) {
+		if (typeid(key) == typeid(current->item->key))
+        {
+            if(key == current->item->key)
+                return true;
+        }
+	}
     return false;
 }
 
@@ -137,6 +175,22 @@ bool HashTableChained<K, V>::find(const K& key) {
 template<typename K, typename V>
 void HashTableChained<K, V>::remove(const K&  key) {
     // Replace the following line with your solution.
+
+    //"here" is a DList pointer pointing to the bucket where key may be.
+    DList<Entry<K,V>> *here = &table[compFunction(key.hashCode())];
+    //"current" points to the first entry of the bucket.
+    DListNode<Entry<K,V>> *current = here->head->next;
+    while (current != here->head) {
+		if (typeid(key) == typeid(current->item->key))
+        {
+            if(key == current->item->key)
+            {
+                here->remove(current);
+                entrysize -= 1;
+            }
+        }
+	}
+    return;
 }
 
 /**
@@ -145,4 +199,7 @@ void HashTableChained<K, V>::remove(const K&  key) {
 template<typename K, typename V>
 void HashTableChained<K, V>::makeEmpty() {
     // Your solution here.
+    delete [] table;
+    table = new DList<Entry<K,V>>[tablesize];
+    entrysize = 0;
 }

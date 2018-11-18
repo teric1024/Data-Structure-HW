@@ -1,5 +1,5 @@
 /**
- * Briefly explain the function of this class->
+ * Briefly explain the function of this class
  *
  * @author 			Tu hao wei
  * @ID 				B06505001
@@ -23,7 +23,7 @@ int main() {
 
     int numBoards = 100;
 
-    HashTableChained<CheckerBoard*, Integer*>* table = new HashTableChained<CheckerBoard*, Integer*>(numBoards);
+    HashTableChained<CheckerBoard*, Integer*>* table = new HashTableChained<CheckerBoard*, Integer*>(numBoards); Integer*>(numBoards);
     initTable(table, numBoards);
 
     // To test your hash function, add a method to your HashTableChained class
