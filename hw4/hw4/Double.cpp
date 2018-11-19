@@ -47,5 +47,11 @@ bool Double::equals(const Double& db) {
 int Double::hashCode() {
     // Replace the following line with your solution.
     //long long int v = d>>32;
-    return 77;
+    //https://www.geeksforgeeks.org/double-hashcode-method-in-java-with-examples/
+    union{
+        double d;
+        long long int i;
+    }u;
+    u.d = d;
+    return pow(u.i,u.i>>32);
 }

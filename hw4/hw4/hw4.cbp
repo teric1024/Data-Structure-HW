@@ -37,6 +37,10 @@
 		<Unit filename="Dictionary.h" />
 		<Unit filename="Double.cpp" />
 		<Unit filename="Double.h" />
+		<Unit filename="DoublyLinkedList/DList.cpp" />
+		<Unit filename="DoublyLinkedList/DList.h" />
+		<Unit filename="DoublyLinkedList/DListNode.cpp" />
+		<Unit filename="DoublyLinkedList/DListNode.h" />
 		<Unit filename="Entry.h" />
 		<Unit filename="HashTableChained.cpp" />
 		<Unit filename="HashTableChained.h" />
