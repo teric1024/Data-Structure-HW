@@ -5,7 +5,7 @@
 
 1417583246 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw4\hw4\checkerboard.h
 
-1542020551 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw4\hw4\double.cpp
+1542709216 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw4\hw4\double.cpp
 	"Double.h"
 	<math.h>
 	<typeinfo>
@@ -24,7 +24,7 @@
 1538891229 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw4\hw4\doublylinkedlist\dlistnode.cpp
 	"DListNode.h"
 
-1542549842 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw4\hw4\hashtablechained.cpp
+1542709908 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw4\hw4\hashtablechained.cpp
 	"HashTableChained.h"
 	<iostream>
 	<typeinfo>
@@ -38,10 +38,19 @@
 
 1417682170 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw4\hw4\entry.h
 
-1542550449 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw4\hw4\string.cpp
+1542709691 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw4\hw4\string.cpp
 	"String.h"
 	<typeinfo>
 
 1385609500 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw4\hw4\string.h
 	<string>
+
+1542709740 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw4\hw4\testhashtable.cpp
+	<stdlib.h>
+	<time.h>
+	"Integer.h"
+	"HashTableChained.h"
+	"CheckerBoard.h"
+
+1385609436 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw4\hw4\integer.h
 

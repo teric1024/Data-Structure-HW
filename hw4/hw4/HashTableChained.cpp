@@ -46,7 +46,8 @@ bool is_prime(int n)
  *  you use a prime number, and shoot for a load factor between 0.5 and 1.)
  **/
 template<typename K, typename V>
-HashTableChained<K, V>::HashTableChained(int sizeEstimate) {
+HashTableChained<K, V>::HashTableChained(int sizeEstimate)
+{
     // Your solution here.
     int fprime = sizeEstimate;
     while(!is_prime(fprime))
@@ -63,7 +64,8 @@ HashTableChained<K, V>::HashTableChained(int sizeEstimate) {
  *  the neighborhood of 100.
  **/
 template<typename K, typename V>
-HashTableChained<K, V>::HashTableChained() {
+HashTableChained<K, V>::HashTableChained()
+{
     // Your solution here.
     tablesize = 101;
     table = new DList<Entry<K,V>>[tablesize];
@@ -78,7 +80,8 @@ HashTableChained<K, V>::HashTableChained() {
  *  should be used by insert, find, and remove.
  **/
 template<typename K, typename V>
-int HashTableChained<K, V>::compFunction(int code) {
+int HashTableChained<K, V>::compFunction(int code)
+{
     // Replace the following line with your solution.
     int val = code % tablesize;
     return val;
@@ -91,7 +94,8 @@ int HashTableChained<K, V>::compFunction(int code) {
  *  @return number of entries in the dictionary.
  **/
 template<typename K, typename V>
-int HashTableChained<K, V>::size() {
+int HashTableChained<K, V>::size()
+{
     // Replace the following line with your solution.
     return entrysize;
 }
@@ -102,7 +106,8 @@ int HashTableChained<K, V>::size() {
  *  @return true if the dictionary has no entries; false otherwise.
  **/
 template<typename K, typename V>
-bool HashTableChained<K, V>::isEmpty() {
+bool HashTableChained<K, V>::isEmpty()
+{
     // Replace the following line with your solution.
     if(entrysize == 0)
     {
@@ -126,7 +131,8 @@ bool HashTableChained<K, V>::isEmpty() {
  *  @param value an arbitrary object.
  **/
 template<typename K, typename V>
-void HashTableChained<K, V>::insert(const K& key, const V& value) {
+void HashTableChained<K, V>::insert(const K& key, const V& value)
+{
     // Replace the following line with your solution.
     Entry<K,V> in(key,value);
     table[compFunction(key.hashCode())].insertFront(in);
@@ -145,23 +151,25 @@ void HashTableChained<K, V>::insert(const K& key, const V& value) {
  *          no entry contains the specified key.
  **/
 template<typename K, typename V>
-bool HashTableChained<K, V>::find(const K& key) { //something wrong
+bool HashTableChained<K, V>::find(const K& key)   //something wrong
+{
     // Replace the following line with your solution.
 
     //"here" is a DList pointer pointing to the bucket where key may be.
     DList<Entry<K,V>> *here = &table[compFunction(key.hashCode())];
     //"current" points to the first entry of the bucket.
     DListNode<Entry<K,V>> *current = here->head->next;
-    while (current != here->head) {
-	if (typeid(key) == typeid(current->item->key))
+    while (current != here->head)
+    {
+        if (typeid(key) == typeid(current->item->key))
         {
             if(key == current->item->key)
                 return true;
         }
-	else
-	{
-		current = current->next;
-	}
+        else
+        {
+            current = current->next;
+        }
     }
     return false;
 }
@@ -177,15 +185,17 @@ bool HashTableChained<K, V>::find(const K& key) { //something wrong
  *  @param key the search key.
  */
 template<typename K, typename V>
-void HashTableChained<K, V>::remove(const K&  key) { //something wrong
+void HashTableChained<K, V>::remove(const K&  key)   //something wrong
+{
     // Replace the following line with your solution.
 
     //"here" is a DList pointer pointing to the bucket where key may be.
     DList<Entry<K,V>> *here = &table[compFunction(key.hashCode())];
     //"current" points to the first entry of the bucket.
     DListNode<Entry<K,V>> *current = here->head->next;
-    while (current != here->head) {
-	if (typeid(key) == typeid(current->item->key))
+    while (current != here->head)
+    {
+        if (typeid(key) == typeid(current->item->key))
         {
             if(key == current->item->key)
             {
@@ -193,10 +203,10 @@ void HashTableChained<K, V>::remove(const K&  key) { //something wrong
                 entrysize -= 1;
             }
         }
-	else
-	{
-		current = current->next;
-	}
+        else
+        {
+            current = current->next;
+        }
     }
     return;
 }
@@ -205,7 +215,8 @@ void HashTableChained<K, V>::remove(const K&  key) { //something wrong
  *  Remove all entries from the dictionary.
  */
 template<typename K, typename V>
-void HashTableChained<K, V>::makeEmpty() {
+void HashTableChained<K, V>::makeEmpty()
+{
     // Your solution here.
     delete [] table;
     table = new DList<Entry<K,V>>[tablesize];

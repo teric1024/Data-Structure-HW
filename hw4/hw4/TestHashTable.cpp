@@ -16,6 +16,9 @@
 #include "HashTableChained.h"
 #include "CheckerBoard.h"
 
+template<typename K, typename V>
+void initTable(HashTableChained<K, V>* table, int numBoards);
+
 int main() {
 
     // initialize random seed:
@@ -23,7 +26,8 @@ int main() {
 
     int numBoards = 100;
 
-    HashTableChained<CheckerBoard*, Integer*>* table = new HashTableChained<CheckerBoard*, Integer*>(numBoards); Integer*>(numBoards);
+    HashTableChained<CheckerBoard*, Integer*>* table = new HashTableChained<CheckerBoard*, Integer*>(numBoards);
+    //HashTableChained<CheckerBoard*, Integer*> a;
     initTable(table, numBoards);
 
     // To test your hash function, add a method to your HashTableChained class
