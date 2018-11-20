@@ -153,12 +153,16 @@ bool HashTableChained<K, V>::find(const K& key) { //something wrong
     //"current" points to the first entry of the bucket.
     DListNode<Entry<K,V>> *current = here->head->next;
     while (current != here->head) {
-		if (typeid(key) == typeid(current->item->key))
+	if (typeid(key) == typeid(current->item->key))
         {
             if(key == current->item->key)
                 return true;
         }
+	else
+	{
+		current = current->next;
 	}
+    }
     return false;
 }
 
@@ -181,7 +185,7 @@ void HashTableChained<K, V>::remove(const K&  key) { //something wrong
     //"current" points to the first entry of the bucket.
     DListNode<Entry<K,V>> *current = here->head->next;
     while (current != here->head) {
-		if (typeid(key) == typeid(current->item->key))
+	if (typeid(key) == typeid(current->item->key))
         {
             if(key == current->item->key)
             {
@@ -189,7 +193,11 @@ void HashTableChained<K, V>::remove(const K&  key) { //something wrong
                 entrysize -= 1;
             }
         }
+	else
+	{
+		current = current->next;
 	}
+    }
     return;
 }
 
