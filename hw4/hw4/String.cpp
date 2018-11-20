@@ -47,10 +47,11 @@ int String::hashCode() {
     // Replace the following line with your solution.
     int hashVal = 0;
     int stringlength = this->getvalue().size();
-    for(int i = 0; i < stringlength; i += 1)
+    int i = 0
+    for(; i < stringlength-1; i += 1)
     {
         hashVal = (127 * hashVal + int(this->getvalue().at(i))) % 1690877;//TODO: need to be changed
-        //that's not very dispersion
     }
+    hashVal = 127 * hashVal + int(this->getvalue().at(i));
     return hashVal;
 }
