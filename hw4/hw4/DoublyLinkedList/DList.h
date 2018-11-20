@@ -22,6 +22,7 @@
 #define DLIST_H
 
 #include "DListNode.h"
+#include "DListNode.cpp"
 
 template<typename T>
 class DList {
@@ -178,6 +179,11 @@ public:
 	 *  getItem() returns the item in the given node.
 	 */
     T getItem(DListNode<T> *node);
+
+    /**
+	 *  gethead() returns the item in the given node.
+	 */
+    DListNode<T>* gethead();
 };
 
 #endif

@@ -54,8 +54,9 @@ DListNode<T>* DList<T>::newNode(const T& item,
 template<typename T>
 DList<T>::DList() {
 	//  Your solution here.
-	DListNode<T> *sentinel = NULL;
-	sentinel = newNode(0, NULL, NULL);
+	T nothing;
+	DListNode<T> *sentinel = nullptr;
+	sentinel = newNode(nothing, nullptr, nullptr);
 	size = 0;
 	head = sentinel;
 	sentinel->prev = sentinel;
@@ -284,7 +285,16 @@ void DList<T>::toString() {
  *  getItem() returns the item in the given node.
  */
 template<typename T>
-T getItem(DListNode<T> *node)
+T DList<T>::getItem(DListNode<T> *node)
 {
     return node->item;
+}
+
+/**
+ *  gethead() returns the item in the given node.
+ */
+template<typename T>
+DListNode<T>* DList<T>::gethead()
+{
+    return head;
 }

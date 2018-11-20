@@ -135,7 +135,7 @@ void HashTableChained<K, V>::insert(const K& key, const V& value)
 {
     // Replace the following line with your solution.
     Entry<K,V> in(key,value);
-    table[compFunction(key.hashCode())].insertFront(in);
+    table[compFunction(key->hashCode())].insertFront(in);
     entrysize += 1;
     return;
 }
@@ -156,19 +156,19 @@ bool HashTableChained<K, V>::find(const K& key)   //something wrong
     // Replace the following line with your solution.
 
     //"here" is a DList pointer pointing to the bucket where key may be.
-    DList<Entry<K,V>> *here = &table[compFunction(key.hashCode())];
+    DList<Entry<K,V>> *here = &table[compFunction(key->hashCode())];
     //"current" points to the first entry of the bucket.
-    DListNode<Entry<K,V>> *current = here->head->next;
-    while (current != here->head)
+    DListNode<Entry<K,V>> *current = here->gethead();
+    while (current != here->gethead())
     {
-        if (typeid(key) == typeid(current->item->key))
+        if (typeid(key) == typeid(here->getItem(current).getkey()))
         {
-            if(key == current->item->key)
+            if(key == here->getItem(current).getkey())
                 return true;
         }
         else
         {
-            current = current->next;
+            current = here->next(current);
         }
     }
     return false;
@@ -190,14 +190,14 @@ void HashTableChained<K, V>::remove(const K&  key)   //something wrong
     // Replace the following line with your solution.
 
     //"here" is a DList pointer pointing to the bucket where key may be.
-    DList<Entry<K,V>> *here = &table[compFunction(key.hashCode())];
+    DList<Entry<K,V>> *here = &table[compFunction(key->hashCode())];
     //"current" points to the first entry of the bucket.
-    DListNode<Entry<K,V>> *current = here->head->next;
-    while (current != here->head)
+    DListNode<Entry<K,V>> *current = here->gethead();
+    while (current != here->gethead())
     {
-        if (typeid(key) == typeid(current->item->key))
+        if (typeid(key) == typeid(here->getItem(current).getkey()))
         {
-            if(key == current->item->key)
+            if(key == here->getItem(current).getkey())
             {
                 here->remove(current);
                 entrysize -= 1;
@@ -205,7 +205,7 @@ void HashTableChained<K, V>::remove(const K&  key)   //something wrong
         }
         else
         {
-            current = current->next;
+            current = here->next(current);
         }
     }
     return;

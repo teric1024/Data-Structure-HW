@@ -27,6 +27,8 @@
 
 #include "Dictionary.h"
 #include "DoublyLinkedList/DList.h"
+#include "DoublyLinkedList/DList.cpp"
+#include "Entry.h"
 
 template<typename K, typename V>
 class HashTableChained : public Dictionary<K, V> {
