@@ -145,7 +145,7 @@ void HashTableChained<K, V>::insert(const K& key, const V& value) {
  *          no entry contains the specified key.
  **/
 template<typename K, typename V>
-bool HashTableChained<K, V>::find(const K& key) {
+bool HashTableChained<K, V>::find(const K& key) { //something wrong
     // Replace the following line with your solution.
 
     //"here" is a DList pointer pointing to the bucket where key may be.
@@ -173,7 +173,7 @@ bool HashTableChained<K, V>::find(const K& key) {
  *  @param key the search key.
  */
 template<typename K, typename V>
-void HashTableChained<K, V>::remove(const K&  key) {
+void HashTableChained<K, V>::remove(const K&  key) { //something wrong
     // Replace the following line with your solution.
 
     //"here" is a DList pointer pointing to the bucket where key may be.
