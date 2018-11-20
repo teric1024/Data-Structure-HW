@@ -50,6 +50,7 @@ int String::hashCode() {
     for(int i = 0; i < stringlength; i += 1)
     {
         hashVal = (127 * hashVal + int(this->getvalue().at(i))) % 1690877;//TODO: need to be changed
+        //that's not very dispersion
     }
     return hashVal;
 }
