@@ -49,7 +49,7 @@ int String::hashCode() {
     int stringlength = this->getvalue().size();
     for(int i = 0; i < stringlength; i += 1)
     {
-        hashVal = (127 * hashVal + int(this->getvalue().at(i))) % 1690877;//need to be changed
+        hashVal = (127 * hashVal + int(this->getvalue().at(i))) % 1690877;//TODO: need to be changed
     }
     return hashVal;
 }
