@@ -28,16 +28,22 @@ double Double::getvalue() const {
  *  @param db is the second Double.
  *  @return true if the double values are equal, false otherwise.
  */
-bool Double::equals(const Double& db) {
+bool Double::equals(const Double& db) { // need to be check again
     // Replace the following line with your solution.  Be sure to return false
     //   (rather than throwing a ClassCastException) if "db" is not
     //   a Double.
     if(typeid(db) != typeid(Double))
+    {
         return false;
-    else if(this->getvalue() == db.getvalue())
-        return true;
-    else
-        return false;
+    }
+    else 
+    {
+        double diff = this->getvalue() - db.getvalue();
+        if(diff < 1e-10 && diff > -1e-10)
+            return true;
+        else
+            return false;
+    }
 }
 
 /**
