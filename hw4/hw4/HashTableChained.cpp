@@ -48,12 +48,12 @@ bool is_prime(int n)
 template<typename K, typename V>
 HashTableChained<K, V>::HashTableChained(int sizeEstimate) {
     // Your solution here.
-    int i = sizeEstimate;
-    for(; !is_prime(i); i += 1)
+    int fprime = sizeEstimate;
+    while(!is_prime(fprime))
     {
-        //Do nothing
+        fprime += 1;
     }
-    tablesize = i;
+    tablesize = fprime;
     table = new DList<Entry<K,V>>[tablesize];
     entrysize = 0;
 }
