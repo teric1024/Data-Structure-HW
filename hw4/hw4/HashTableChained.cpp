@@ -181,7 +181,6 @@ bool HashTableChained<K, V>::find(const K& key)   //something wrong
     {
         if(here->getItem(current).getkey()->equals(*copy_key))
         {
-            cout << "©³®a°Õ " << i+1 <<endl;
             return true;
         }
         else
@@ -227,6 +226,7 @@ void HashTableChained<K, V>::remove(const K&  key)   //something wrong
         {
             here->remove(current);
             entrysize -= 1;
+            return;
         }
         else
         {

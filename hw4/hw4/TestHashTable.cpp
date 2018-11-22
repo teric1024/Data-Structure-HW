@@ -38,6 +38,7 @@ int main() {
     // from here.
     */
 
+    //-----test-------------
     HashTableChained<Double*, Integer*>* Table = new HashTableChained<Double*, Integer*>(100);
 
 
@@ -53,8 +54,9 @@ int main() {
 	Table->print();
 
 	cout << "There are " << Table->size() << " entries in the table" << endl; //Test size()
+	printf("collision counter : %d\n", Table->collision_count());
 
-	Double *f = new Double(35); //Test find()
+	Double *f = new Double(100); //Test find()
 	if (Table->find(f))
 		cout << "The entry whose key is " << f->getvalue() << " can be found." << endl;
 	else
@@ -71,7 +73,7 @@ int main() {
 	else
 		cout << "Table is not empty." << endl;
 
-    Table->print();
+    //Table->print();
     cout << endl << endl;
 	Table->makeEmpty(); //Test makeEmpty()
 	Table->print();
@@ -79,7 +81,19 @@ int main() {
 		cout << "Table is empty." << endl;
 	else
 		cout << "Table is not empty." << endl;
+    //-----end test--------
 
+    //-----test mumi------
+    HashTableChained<Double*, Integer*>* hashMumi = new HashTableChained<Double*, Integer*>;
+    for(int i = 0; i < 100; ++ i){
+        Double* nd = new Double(3.14159 * static_cast<double>(i) + 5.2);
+        Integer* ni = new Integer(i);
+        hashMumi->insert(nd, ni);
+    }
+    hashMumi->print();
+    printf("collision counter : %d\n", hashMumi->collision_count());
+    hashMumi->makeEmpty();
+    //------end test mumi-----
     return 0;
 }
 
