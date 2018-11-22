@@ -28,6 +28,12 @@ public:
   CheckerBoard();
 
   /**
+   *  Construct a new board in which all cells are zero.
+   *  @param is CheckerBoard.
+   */
+  CheckerBoard(const CheckerBoard& board);
+
+  /**
    *  Set the cell (x, y) in the board to the given value mod 3.
    *  @param value to which the element should be set (normally 0, 1, or 2).
    *  @param x is the x-index.

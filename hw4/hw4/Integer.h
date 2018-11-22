@@ -6,6 +6,8 @@
 
 #ifndef INTEGER_H
 #define INTEGER_H
+#include <iostream>
+using namespace std;
 
 class Integer {
 private:
@@ -22,11 +24,22 @@ public:
   }
 
   /**
+   *  Construct a new Integer with i = 0;
+   */
+  Integer() {i = 0;}
+
+  /**
    *  Get the value of the int variable.
    *  @return the stored value.
    */
   int getvalue() const {
     return i;
+  }
+
+  friend ostream& operator<<(ostream& os, const Integer in)
+  {
+      os << in.i;
+      return os;
   }
 };
 

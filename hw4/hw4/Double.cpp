@@ -16,6 +16,14 @@ Double::Double(const double& d) {
 }
 
 /**
+ *  Construct a new Double with the given variable.
+ *  @param d is the Double variable.
+ */
+Double::Double(const Double& d) {
+    this->d = d.getvalue();
+}
+
+/**
  *  Get the value of the double variable.
  *  @return the stored value.
  */
@@ -36,7 +44,7 @@ bool Double::equals(const Double& db) { // need to be check again
     {
         return false;
     }
-    else 
+    else
     {
         double diff = this->getvalue() - db.getvalue();
         if(diff < 1e-10 && diff > -1e-10)
@@ -60,4 +68,13 @@ int Double::hashCode() {
     }u;
     u.d = d;
     return pow(u.i,u.i>>32);
+}
+
+/**
+ *  print the value of d
+ */
+ostream& operator<<(ostream &os, const Double &db)
+{
+    os << db.d;
+    return os;
 }

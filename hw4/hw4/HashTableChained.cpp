@@ -25,8 +25,10 @@
 #include <iostream>
 #include <typeinfo>
 using namespace std;
+
 //check if the input number is a prime
-bool is_prime(int n)
+template<typename K, typename V>
+bool HashTableChained<K, V>::is_Prime(int n)
 {
     bool flag = true;
     for(int i = 2; i * i <= n; i += 1)
@@ -50,7 +52,7 @@ HashTableChained<K, V>::HashTableChained(int sizeEstimate)
 {
     // Your solution here.
     int fprime = sizeEstimate;
-    while(!is_prime(fprime))
+    while(!is_Prime(fprime))
     {
         fprime += 1;
     }
@@ -134,8 +136,13 @@ template<typename K, typename V>
 void HashTableChained<K, V>::insert(const K& key, const V& value)
 {
     // Replace the following line with your solution.
+    K copy_key(key);
     Entry<K,V> in(key,value);
-    table[compFunction(key->hashCode())].insertFront(in);
+    //if K is a pointer use the code below
+    //table[compFunction(key->hashCode())].insertFront(in);
+
+    //if K is not a pointer use the code below
+    table[compFunction(copy_key.hashCode())].insertFront(in);
     entrysize += 1;
     return;
 }
@@ -153,18 +160,27 @@ void HashTableChained<K, V>::insert(const K& key, const V& value)
 template<typename K, typename V>
 bool HashTableChained<K, V>::find(const K& key)   //something wrong
 {
-    // Replace the following line with your solution.
-
+    K copy_key(key);
     //"here" is a DList pointer pointing to the bucket where key may be.
-    DList<Entry<K,V>> *here = &table[compFunction(key->hashCode())];
+    //if K is a pointer use the code below
+    //DList<Entry<K,V>> *here = &table[compFunction(d_key->hashCode())];
+
+    //if K is not a pointer use the code below
+    DList<Entry<K,V>> *here = &table[compFunction(copy_key.hashCode())];
+
     //"current" points to the first entry of the bucket.
-    DListNode<Entry<K,V>> *current = here->gethead();
-    while (current != here->gethead())
+    DListNode<Entry<K,V>> *current = here->front();
+
+    if (typeid(copy_key) != typeid(here->getItem(current).getkey()))
     {
-        if (typeid(key) == typeid(here->getItem(current).getkey()))
+        return false;
+    }
+
+    while (current != here->front())
+    {
+        if(copy_key.getvalue() == here->getItem(current).getkey().getvalue())
         {
-            if(key == here->getItem(current).getkey())
-                return true;
+            return true;
         }
         else
         {
@@ -187,21 +203,28 @@ bool HashTableChained<K, V>::find(const K& key)   //something wrong
 template<typename K, typename V>
 void HashTableChained<K, V>::remove(const K&  key)   //something wrong
 {
-    // Replace the following line with your solution.
-
+    K copy_key(key);
     //"here" is a DList pointer pointing to the bucket where key may be.
-    DList<Entry<K,V>> *here = &table[compFunction(key->hashCode())];
+    //if K is a pointer use the code below
+    //DList<Entry<K,V>> *here = &table[compFunction(d_key->hashCode())];
+
+    //if K is not a pointer use the code below
+    DList<Entry<K,V>> *here = &table[compFunction(copy_key.hashCode())];
+
     //"current" points to the first entry of the bucket.
-    DListNode<Entry<K,V>> *current = here->gethead();
-    while (current != here->gethead())
+    DListNode<Entry<K,V>> *current = here->front();
+
+    if (typeid(copy_key) != typeid(here->getItem(current).getkey()))
     {
-        if (typeid(key) == typeid(here->getItem(current).getkey()))
+        return;
+    }
+
+    while (current != here->front())
+    {
+        if(copy_key.getvalue() == here->getItem(current).getkey().getvalue())
         {
-            if(key == here->getItem(current).getkey())
-            {
-                here->remove(current);
-                entrysize -= 1;
-            }
+            here->remove(current);
+            entrysize -= 1;
         }
         else
         {
@@ -221,4 +244,29 @@ void HashTableChained<K, V>::makeEmpty()
     delete [] table;
     table = new DList<Entry<K,V>>[tablesize];
     entrysize = 0;
+}
+
+/**
+ *  print all entries from the dictionary.
+ */
+template<typename K, typename V>
+void HashTableChained<K, V>::print()
+{
+    for(int i = 0; i < tablesize; i += 1)
+    {
+        DList<Entry<K,V>> *here = &table[i];
+        cout << "hashtable[" << i << "] : ";
+		if (here->length() == 0)
+        {
+			cout << "nothing" << endl;
+			continue;
+		}
+		DListNode<Entry<K,V>> *current = here->front();
+		for (int j = 0; j < here->length(); j += 1)
+        {
+			cout << "(" << here->getItem(current).getkey() << "," << here->getItem(current).getvalue() << ") ";
+			current = here->next(current);
+		}
+		cout << endl;
+    }
 }

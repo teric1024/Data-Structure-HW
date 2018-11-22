@@ -23,6 +23,17 @@ public:
   String(const string& str);
 
   /**
+   *  Construct a new String with only '\0'.
+   */
+  String(){str = "\0";};
+
+  /**
+   *  Construct a new String with the given variable.
+   *  @param str is String.
+   */
+  String(const String& str);
+
+  /**
    *  Get the value of the string variable.
    *  @return the stored value.
    */

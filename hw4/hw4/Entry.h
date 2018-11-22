@@ -19,12 +19,14 @@ public:
     key = k;
     value = v;
   }
+  Entry(){
+  }
 
-  K& getkey()  const{//removed const
+  K getkey()  {
     return key;
   }
 
-  V& getvalue() const {
+  V getvalue() {
     return value;
   }
 

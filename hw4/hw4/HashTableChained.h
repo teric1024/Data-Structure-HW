@@ -90,7 +90,7 @@ public:
    *  @param key the key by which the entry can be retrieved.
    *  @param value an arbitrary object.
    **/
-  virtual void insert(const K& key, const V& value);
+  virtual void insert(const K& key, const V& value);//remove const
 
   /**
    *  Search for an entry with the specified key.  If such an entry is found,
@@ -120,6 +120,15 @@ public:
    *  Remove all entries from the dictionary.
    */
   virtual void makeEmpty();
-};
 
+  /**
+   *  check if n is prime.
+   */
+  bool is_Prime(int n);
+
+  /**
+   *  print all entries from the dictionary.
+   */
+  void print();
+};
 #endif

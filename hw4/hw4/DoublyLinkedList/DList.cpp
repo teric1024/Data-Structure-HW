@@ -125,7 +125,7 @@ DListNode<T>* DList<T>::front() {
 	// Your solution here.
 	if(isEmpty())
     {
-        return NULL;
+        return nullptr;
     }
     else
     {
@@ -147,7 +147,7 @@ DListNode<T>* DList<T>::back() {
 	// Your solution here.
 	if(isEmpty())
     {
-        return NULL;
+        return nullptr;
     }
     else
     {
@@ -168,9 +168,9 @@ DListNode<T>* DList<T>::back() {
 template<typename T>
 DListNode<T>* DList<T>::next(DListNode<T>* node) {
 	// Your solution here.
-	if(node == NULL || head->prev == node)
+	if(node == nullptr || head->prev == node)
     {
-        return NULL;
+        return nullptr;
     }
     else
     {
@@ -191,9 +191,9 @@ DListNode<T>* DList<T>::next(DListNode<T>* node) {
 template<typename T>
 DListNode<T>* DList<T>::prev(DListNode<T>* node) {
 	// Your solution here.
-	if(node == NULL || head->next == node)
+	if(node == nullptr || head->next == node)
     {
-        return NULL;
+        return nullptr;
     }
     else
     {
@@ -211,7 +211,7 @@ DListNode<T>* DList<T>::prev(DListNode<T>* node) {
 template<typename T>//unsure
 void DList<T>::insertAfter(const T& item, DListNode<T>* node) {
 	// Your solution here.
-	if(node == NULL)
+	if(node == nullptr)
     {
         return;
     }
@@ -232,7 +232,7 @@ void DList<T>::insertAfter(const T& item, DListNode<T>* node) {
 template<typename T>//unsure
 void DList<T>::insertBefore(const T& item, DListNode<T>* node) {
 	// Your solution here.
-	if(node == NULL)
+	if(node == nullptr)
     {
         return;
     }
@@ -250,7 +250,7 @@ void DList<T>::insertBefore(const T& item, DListNode<T>* node) {
 template<typename T>
 void DList<T>::remove(DListNode<T>* node) {
 	// Your solution here.
-	if(node == NULL)
+	if(node == nullptr)
     {
         return;
     }
@@ -290,11 +290,3 @@ T DList<T>::getItem(DListNode<T> *node)
     return node->item;
 }
 
-/**
- *  gethead() returns the item in the given node.
- */
-template<typename T>
-DListNode<T>* DList<T>::gethead()
-{
-    return head;
-}

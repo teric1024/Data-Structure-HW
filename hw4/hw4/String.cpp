@@ -15,6 +15,14 @@ String::String(const string& str) {
 }
 
 /**
+ *  Construct a new String with the given variable.
+ *  @param str is String.
+ */
+String::String(const String& str) {
+    this->str = str.getvalue();
+}
+
+/**
  *  Get the value of the string variable.
  *  @return the stored value.
  */

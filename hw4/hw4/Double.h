@@ -6,7 +6,8 @@
 
 #ifndef DOUBLE_H
 #define DOUBLE_H
-
+#include <iostream>
+using namespace std;
 
 class Double {
 private:
@@ -19,6 +20,17 @@ public:
    *  @param d the double variable by which the Double stores.
    */
   Double(const double& d);
+
+  /**
+   *  Construct a new Double with d = 0.
+   */
+  Double(){d = 0;};
+
+  /**
+   *  Construct a new Double with the given variable.
+   *  @param d is the Double variable.
+   */
+  Double(const Double& d);
 
   /**
    *  Get the value of the double variable.
@@ -38,6 +50,11 @@ public:
    *  @return a number between Integer.MIN_VALUE and Integer.MAX_VALUE.
    */
   int hashCode();
+
+  /**
+   *  print the value of d
+   */
+  friend ostream& operator<<(ostream &os, const Double &db);
 };
 
 #endif

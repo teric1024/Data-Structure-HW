@@ -180,10 +180,6 @@ public:
 	 */
     T getItem(DListNode<T> *node);
 
-    /**
-	 *  gethead() returns the item in the given node.
-	 */
-    DListNode<T>* gethead();
 };
 
 #endif

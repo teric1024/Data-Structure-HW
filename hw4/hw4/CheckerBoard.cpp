@@ -24,6 +24,17 @@ CheckerBoard::CheckerBoard() {
 }
 
 /**
+ *  Construct a new board with the given variable.
+ *  @param is CheckerBoard.
+ */
+CheckerBoard::CheckerBoard(const CheckerBoard &board) {
+    CheckerBoard copy_b = board;
+    for (int i = 0; i < DIMENSION; i++)
+        for (int j = 0; j < DIMENSION; j++)
+            grid[i][j] = copy_b.elementAt(i,j);
+}
+
+/**
  *  Set the cell (x, y) in the board to the given value mod 3.
  *  @param value to which the element should be set (normally 0, 1, or 2).
  *  @param x is the x-index.
