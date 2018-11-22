@@ -130,5 +130,10 @@ public:
    *  print all entries from the dictionary.
    */
   void print();
+
+  /**
+   *  count how many collisions we got.
+   */
+  int collision_count();
 };
 #endif

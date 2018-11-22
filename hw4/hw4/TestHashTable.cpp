@@ -38,43 +38,41 @@ int main() {
     // from here.
     */
 
-    HashTableChained<Double*, Integer*>* Table = new HashTableChained<Double*, Integer*>;
+    HashTableChained<Double*, Integer*>* Table = new HashTableChained<Double*, Integer*>(100);
 
-    cout << "Declare may be OK." << endl;
 
 	//Test insert() and print()
-	for (int i = 0; i < 97; i++) {
+	for (int i = 0; i < 100; i++) {
 		Integer *p2i = new Integer(i);
 		Double *p2d = new Double(double(i+3));
-		cout << i+1 << "times declare in for-loop." << endl;
 		Table->insert(p2d,p2i);
-        cout << i+1 << "times insert entry in for-loop." << endl;
 	}
 
-	cout << "Insert may be OK." << endl << endl;
 
 	cout << "----Print the hashtable---"<< endl;
 	Table->print();
 
 	cout << "There are " << Table->size() << " entries in the table" << endl; //Test size()
 
-	Double *f = new Double(50); //Test find()
+	Double *f = new Double(35); //Test find()
 	if (Table->find(f))
-		cout << "The entry whose key is 50 can be found." << endl;
+		cout << "The entry whose key is " << f->getvalue() << " can be found." << endl;
 	else
-		cout << "The entry whose key is 50 can't be found." << endl;
+		cout << "The entry whose key is " << f->getvalue() << " can't be found." << endl;
 
 	Table->remove(f); //Test remove()
 	if (Table->find(f))
-		cout << "The entry whose key is 50 still exists." << endl;
+		cout << "The entry whose key is " << f->getvalue() << " still exists." << endl;
 	else
-		cout << "The entry whose key is 50 has been removed." << endl;
+		cout << "The entry whose key is " << f->getvalue() << " has been removed." << endl;
 
 	if (Table->isEmpty()) //Test isEmpty()
 		cout << "Table is empty." << endl;
 	else
 		cout << "Table is not empty." << endl;
 
+    Table->print();
+    cout << endl << endl;
 	Table->makeEmpty(); //Test makeEmpty()
 	Table->print();
 	if (Table->isEmpty())

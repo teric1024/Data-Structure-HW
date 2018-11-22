@@ -7,6 +7,7 @@
 #include <math.h>
 #include <typeinfo>
 
+
 /**
  *  Construct a new Double with the given variable.
  *  @param d the double variable by which the Double stores.
@@ -67,7 +68,12 @@ int Double::hashCode() {
         long long int i;
     }u;
     u.d = d;
-    return pow(u.i,u.i>>32);
+    long long int val = u.i;
+    for(int j = 0; j < 32; j += 1)
+    {
+        val = val * u.i % 1690877 + 1376;
+    }
+    return val;
 }
 
 /**

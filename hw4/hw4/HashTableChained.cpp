@@ -85,7 +85,8 @@ template<typename K, typename V>
 int HashTableChained<K, V>::compFunction(int code)
 {
     // Replace the following line with your solution.
-    int val = code % tablesize;
+    int val = 0;
+    val = (int)abs((code * 37 + 101) % tablesize);
     return val;
 }
 
@@ -138,10 +139,7 @@ void HashTableChained<K, V>::insert(const K& key, const V& value)
     // Replace the following line with your solution.
     K copy_key(key);
     Entry<K,V> in(key,value);
-    cout << "---In insert function---" << endl;
-    cout << "(key, value) = (" << key->getvalue() << "," << value->getvalue() << ")\n";
     //if K is a pointer use the code below
-    cout << table[compFunction(copy_key->hashCode())].isEmpty() << endl;
     table[compFunction(copy_key->hashCode())].insertFront(in);
 
     //if K is not a pointer use the code below
@@ -179,10 +177,11 @@ bool HashTableChained<K, V>::find(const K& key)   //something wrong
         return false;
     }
 
-    while (current != here->front())
+    for(int i = 0; i < here->length(); i += 1)
     {
-        if(copy_key->getvalue() == here->getItem(current).getkey()->getvalue())
+        if(here->getItem(current).getkey()->equals(*copy_key))
         {
+            cout << "©³®a°Õ " << i+1 <<endl;
             return true;
         }
         else
@@ -222,9 +221,9 @@ void HashTableChained<K, V>::remove(const K&  key)   //something wrong
         return;
     }
 
-    while (current != here->front())
+    for(int i = 0; i < here->length(); i += 1)
     {
-        if(copy_key->getvalue() == here->getItem(current).getkey()->getvalue())
+        if(here->getItem(current).getkey()->equals(*copy_key))
         {
             here->remove(current);
             entrysize -= 1;
@@ -267,9 +266,28 @@ void HashTableChained<K, V>::print()
 		DListNode<Entry<K,V>> *current = here->front();
 		for (int j = 0; j < here->length(); j += 1)
         {
-			cout << "(" << here->getItem(current).getkey() << "," << here->getItem(current).getvalue() << ") ";
+			cout << "(" << here->getItem(current).getkey()->getvalue() << "," << here->getItem(current).getvalue()->getvalue() << ") ";
 			current = here->next(current);
 		}
 		cout << endl;
     }
+}
+
+/**
+ *  count how many collisions we got.
+ */
+template<typename K, typename V>
+int HashTableChained<K, V>::collision_count()
+{
+    int counter = 0;
+    for (int i = 0; i < tablesize; i += 1)
+    {
+        if (table[i].isEmpty())
+            continue;
+        else
+        {
+            counter += table[i].length()-1;
+        }
+    }
+    return counter;
 }
