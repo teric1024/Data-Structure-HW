@@ -42,12 +42,18 @@ int main() {
 
     cout << "Declare may be OK." << endl;
 
-	double i; //Test insert() and print()
+	double i = 0; //Test insert() and print()
 	for (i = 0; i < 97; i++) {
 		Integer in(i);
 		Double din(i);
+		cout << i+1 << "times declare in for-loop." << endl;
 		Table->insert(din,in);
+        cout << i+1 << "times insert entry in for-loop." << endl;
 	}
+
+	cout << "Insert may be OK." << endl << endl;
+
+	cout << "----Print the hashtable---"<< endl;
 	Table->print();
 
 	cout << "There are " << Table->size() << " entries in the table" << endl; //Test size()
