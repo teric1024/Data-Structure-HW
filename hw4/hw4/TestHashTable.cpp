@@ -38,16 +38,16 @@ int main() {
     // from here.
     */
 
-    HashTableChained<Double, Integer>* Table = new HashTableChained<Double, Integer>;
+    HashTableChained<Double*, Integer*>* Table = new HashTableChained<Double*, Integer*>;
 
     cout << "Declare may be OK." << endl;
 
-	double i = 0; //Test insert() and print()
-	for (i = 0; i < 97; i++) {
-		Integer in(i);
-		Double din(i);
+	//Test insert() and print()
+	for (int i = 0; i < 97; i++) {
+		Integer *p2i = new Integer(i);
+		Double *p2d = new Double(double(i+3));
 		cout << i+1 << "times declare in for-loop." << endl;
-		Table->insert(din,in);
+		Table->insert(p2d,p2i);
         cout << i+1 << "times insert entry in for-loop." << endl;
 	}
 
@@ -58,7 +58,7 @@ int main() {
 
 	cout << "There are " << Table->size() << " entries in the table" << endl; //Test size()
 
-	Double f(50); //Test find()
+	Double *f = new Double(50); //Test find()
 	if (Table->find(f))
 		cout << "The entry whose key is 50 can be found." << endl;
 	else

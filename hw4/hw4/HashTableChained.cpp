@@ -138,11 +138,14 @@ void HashTableChained<K, V>::insert(const K& key, const V& value)
     // Replace the following line with your solution.
     K copy_key(key);
     Entry<K,V> in(key,value);
+    cout << "---In insert function---" << endl;
+    cout << "(key, value) = (" << key->getvalue() << "," << value->getvalue() << ")\n";
     //if K is a pointer use the code below
-    //table[compFunction(key->hashCode())].insertFront(in);
+    cout << table[compFunction(copy_key->hashCode())].isEmpty() << endl;
+    table[compFunction(copy_key->hashCode())].insertFront(in);
 
     //if K is not a pointer use the code below
-    table[compFunction(copy_key.hashCode())].insertFront(in);
+    //table[compFunction(copy_key.hashCode())].insertFront(in);
     entrysize += 1;
     return;
 }
@@ -163,10 +166,10 @@ bool HashTableChained<K, V>::find(const K& key)   //something wrong
     K copy_key(key);
     //"here" is a DList pointer pointing to the bucket where key may be.
     //if K is a pointer use the code below
-    //DList<Entry<K,V>> *here = &table[compFunction(d_key->hashCode())];
+    DList<Entry<K,V>> *here = &table[compFunction(copy_key->hashCode())];
 
     //if K is not a pointer use the code below
-    DList<Entry<K,V>> *here = &table[compFunction(copy_key.hashCode())];
+    //DList<Entry<K,V>> *here = &table[compFunction(copy_key.hashCode())];
 
     //"current" points to the first entry of the bucket.
     DListNode<Entry<K,V>> *current = here->front();
@@ -178,7 +181,7 @@ bool HashTableChained<K, V>::find(const K& key)   //something wrong
 
     while (current != here->front())
     {
-        if(copy_key.getvalue() == here->getItem(current).getkey().getvalue())
+        if(copy_key->getvalue() == here->getItem(current).getkey()->getvalue())
         {
             return true;
         }
@@ -206,10 +209,10 @@ void HashTableChained<K, V>::remove(const K&  key)   //something wrong
     K copy_key(key);
     //"here" is a DList pointer pointing to the bucket where key may be.
     //if K is a pointer use the code below
-    //DList<Entry<K,V>> *here = &table[compFunction(d_key->hashCode())];
+    DList<Entry<K,V>> *here = &table[compFunction(copy_key->hashCode())];
 
     //if K is not a pointer use the code below
-    DList<Entry<K,V>> *here = &table[compFunction(copy_key.hashCode())];
+    //DList<Entry<K,V>> *here = &table[compFunction(copy_key.hashCode())];
 
     //"current" points to the first entry of the bucket.
     DListNode<Entry<K,V>> *current = here->front();
@@ -221,7 +224,7 @@ void HashTableChained<K, V>::remove(const K&  key)   //something wrong
 
     while (current != here->front())
     {
-        if(copy_key.getvalue() == here->getItem(current).getkey().getvalue())
+        if(copy_key->getvalue() == here->getItem(current).getkey()->getvalue())
         {
             here->remove(current);
             entrysize -= 1;
