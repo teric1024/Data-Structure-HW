@@ -45,7 +45,7 @@ int main() {
 	//Test insert() and print()
 	for (int i = 0; i < 100; i++) {
 		Integer *p2i = new Integer(i);
-		Double *p2d = new Double(double(i+3));
+		Double *p2d = new Double(double(i+3.725));
 		Table->insert(p2d,p2i);
 	}
 
@@ -56,7 +56,7 @@ int main() {
 	cout << "There are " << Table->size() << " entries in the table" << endl; //Test size()
 	printf("collision counter : %d\n", Table->collision_count());
 
-	Double *f = new Double(100); //Test find()
+	Double *f = new Double(7.725); //Test find()
 	if (Table->find(f))
 		cout << "The entry whose key is " << f->getvalue() << " can be found." << endl;
 	else
@@ -72,15 +72,16 @@ int main() {
 		cout << "Table is empty." << endl;
 	else
 		cout << "Table is not empty." << endl;
-
-    //Table->print();
+    Table->print();
     cout << endl << endl;
+
+    /*
 	Table->makeEmpty(); //Test makeEmpty()
 	Table->print();
 	if (Table->isEmpty())
 		cout << "Table is empty." << endl;
 	else
-		cout << "Table is not empty." << endl;
+		cout << "Table is not empty." << endl;*/
     //-----end test--------
 
     //-----test mumi------

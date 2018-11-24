@@ -68,12 +68,10 @@ int Double::hashCode() {
         long long int i;
     }u;
     u.d = d;
-    long long int val = u.i;
-    for(int j = 0; j < 32; j += 1)
-    {
-        val = val * u.i % 1690877 + 1376;
-    }
-    return val;
+    // make number rougher
+    u.i >> 10;
+    u.i << 10;
+    return int(u.i^(u.i >> 32));
 }
 
 /**
