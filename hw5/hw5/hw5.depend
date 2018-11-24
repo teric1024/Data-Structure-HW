@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1418898188 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw5\hw5\binarytreenode.cpp
+	<iostream>
+	<sstream>
+	"BinaryTreeNode.h"
+
+1418898056 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw5\hw5\binarytreenode.h
+	"Entry.h"
+	<string>
+
+1418892728 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw5\hw5\entry.h
+
+1543018909 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw5\hw5\testbinarytree.cpp
+	<iostream>
+	<string>
+	"Integer.h"
+	"String.h"
+	"BinaryTree.h"
+	"BinaryTree.cpp"
+
+1418897758 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw5\hw5\integer.h
+
+1418897758 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw5\hw5\string.h
+	<string>
+
+1543018619 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw5\hw5\binarytree.h
+	"BinaryTreeNode.h"
+	"BinaryTreeNode.cpp"
+	"Dictionary.h"
+
+1418898188 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw5\hw5\binarytreenode.cpp
+	<iostream>
+	<sstream>
+	"BinaryTreeNode.h"
+
+1418897880 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw5\hw5\dictionary.h
+	"Entry.h"
+
+1543029591 d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw5\hw5\binarytree.cpp
+	"BinaryTree.h"
+
+1543029591 source:d:\eric-hd\college\107-1\資料結構\homework\data-structure-hw\hw5\hw5\binarytree.cpp
+	"BinaryTree.h"
+
