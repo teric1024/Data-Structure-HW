@@ -69,8 +69,8 @@ int Double::hashCode() {
     }u;
     u.d = d;
     // make number rougher
-    u.i >> 10;
-    u.i << 10;
+    u.i >> 5;
+    u.i << 5;
     return int(u.i^(u.i >> 32));
 }
 

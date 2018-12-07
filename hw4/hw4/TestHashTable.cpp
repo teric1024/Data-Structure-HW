@@ -21,6 +21,8 @@
 template<typename K, typename V>
 void initTable(HashTableChained<K, V>* table, int numBoards);
 
+CheckerBoard* randomBoard();
+
 int main() {
     /*
     // initialize random seed:
@@ -45,7 +47,7 @@ int main() {
 	//Test insert() and print()
 	for (int i = 0; i < 100; i++) {
 		Integer *p2i = new Integer(i);
-		Double *p2d = new Double(double(i+3.725));
+		Double *p2d = new Double(i+3.72533);
 		Table->insert(p2d,p2i);
 	}
 
@@ -56,7 +58,7 @@ int main() {
 	cout << "There are " << Table->size() << " entries in the table" << endl; //Test size()
 	printf("collision counter : %d\n", Table->collision_count());
 
-	Double *f = new Double(7.725); //Test find()
+	Double *f = new Double(7.72533); //Test find()
 	if (Table->find(f))
 		cout << "The entry whose key is " << f->getvalue() << " can be found." << endl;
 	else
@@ -95,6 +97,12 @@ int main() {
     printf("collision counter : %d\n", hashMumi->collision_count());
     hashMumi->makeEmpty();
     //------end test mumi-----
+
+    //------test checkerboard---
+    HashTableChained<CheckerBoard*, Integer*>* Table_c = new HashTableChained<CheckerBoard*, Integer*>(100);
+    initTable(Table_c, 100);
+    cout << "There are " << Table_c->size() << " entries in the table" << endl; //Test size()
+    printf("collision counter : %d\n", Table->collision_count());
     return 0;
 }
 
